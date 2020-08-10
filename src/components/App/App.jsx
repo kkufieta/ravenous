@@ -1,6 +1,7 @@
 import React from 'react';
 import BusinessList from '../BusinessList/BusinessList.jsx';
 import SearchBar from '../SearchBar/SearchBar.jsx';
+import Yelp from '../../util/Yelp.jsx';
 import './App.css';
 
 const businesses = [
@@ -46,8 +47,10 @@ const businesses = [
 ]
 
 class App extends React.Component {
-  searchYelp(term, location, sortBy) {
+  async searchYelp(term, location, sortBy) {
     console.log("searching for ", term, " in location ", location, " sorted by: ", sortBy);
+    const businesses = await Yelp.search(term, location, sortBy);
+    console.log(businesses);
   }
 
   render() {
