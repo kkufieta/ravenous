@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleLocationChange = this.handleLocationChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     handleSortByChange(sortByOption) {
@@ -34,8 +34,10 @@ class SearchBar extends React.Component {
         this.setState({ location: event.target.value });
     }
 
-    handleSubmit(event) {
-        console.log("Searching for: ", this.state.term, " in : ", this.state.location, " sorted by: ", this.state.sortBy);
+    handleSearch(event) {
+        this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+        // TODO: Understand better what preventDefault does!
+        event.preventDefault();
     }
 
     getSortByClass(sortByOption) {
@@ -71,7 +73,7 @@ class SearchBar extends React.Component {
                         placeholder="Where?"
                         onChange={this.handleLocationChange} />
                 </div>
-                <div className="SearchBar-submit" onClick={this.handleSubmit}>
+                <div className="SearchBar-submit" onClick={this.handleSearch}>
                     <a>Let's Go</a>
                 </div>
             </div>
