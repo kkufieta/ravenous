@@ -1,4 +1,5 @@
-import './index.css';
+// import './index.css';
+import './stylesheets/reset.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
